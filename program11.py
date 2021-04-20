@@ -13,3 +13,5 @@ cv2.imshow("Image2",img2.astype("uint8"))
 key = cv2.waitKey(0)
 
 cv2.destroyWindow("Image")
+cv2.destroyWindow("Mask")
+cv2.destroyWindow("Image2")
