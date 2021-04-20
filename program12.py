@@ -11,3 +11,4 @@ cv2.imshow("Image2",canny_img)
 key = cv2.waitKey(0)
 
 cv2.destroyWindow("Image")
+cv2.destroyWindow("Image2")
