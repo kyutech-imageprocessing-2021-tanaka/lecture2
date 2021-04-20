@@ -9,15 +9,18 @@ ret, img2 = cv2.threshold(gray, 254, 255, cv2.THRESH_BINARY_INV)
 label = cv2.connectedComponentsWithStats(img2)
 
 n = label[0] - 1
-data = np.delete(label[2], 0, 0)
-center = np.delete(label[3], 0, 0)
+bbox = label[2]
+center = label[3]
 
 for i in range(n):
-    x1 = data[i][0]
-    y1 = data[i][1]
-    x2 = x1 + data[i][2]
-    y2 = y1 + data[i][3]
+    x1 = bbox[i][0]
+    y1 = bbox[i][1]
+    x2 = x1 + bbox[i][2]
+    y2 = y1 + bbox[i][3]
     cv2.rectangle(img, (x1,y1), (x2,y2), (0,0,0))
+    cx = int( center[i][0] )
+    cy = int( center[i][1] )
+    cv2.circle(img, (cx,cy), 5, (0,0,0), -1)
 
 cv2.imshow("Image",img)
 cv2.imshow("Image2",gray)
