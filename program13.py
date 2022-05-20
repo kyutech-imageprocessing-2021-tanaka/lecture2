@@ -8,11 +8,11 @@ ret, img2 = cv2.threshold(gray, 254, 255, cv2.THRESH_BINARY_INV)
 
 label = cv2.connectedComponentsWithStats(img2)
 
-n = label[0] - 1
+n = label[0]
 bbox = label[2]
 center = label[3]
 
-for i in range(n):
+for i in range(1,n):
     x1 = bbox[i][0]
     y1 = bbox[i][1]
     x2 = x1 + bbox[i][2]
